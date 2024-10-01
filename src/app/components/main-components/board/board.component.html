@@ -1,0 +1,45 @@
+<body>
+
+<div class="new-task-button"  (click)="newInput()">Create New Task</div>
+
+
+<app-new-task-input-field *ngIf="showNewInputField" (newTaskEvent)="addTask($event)">
+</app-new-task-input-field>
+
+
+<table class="table">
+  <tr>
+    <td>
+      <app-task *ngFor="let task of tasksOne"
+                [task]="task">
+      </app-task>
+    </td>
+    <td>
+      <app-task *ngFor="let task of tasksTwo"
+                [task]="task">
+      </app-task>
+    </td>
+    <td>
+      <app-task *ngFor="let task of tasksThree"
+                [task]="task">
+      </app-task>
+    </td>
+    <td>
+      <app-task *ngFor="let task of tasksFour"
+                [task]="task">
+      </app-task>
+    </td>
+    <td>
+      <app-task *ngFor="let task of tasksFive"
+                [task]="task">
+      </app-task>
+    </td>
+  </tr>
+</table>
+
+
+
+
+
+</body>
+
