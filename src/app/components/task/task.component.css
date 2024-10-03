@@ -1,5 +1,14 @@
-.bg {
-  background-color: lightgreen;
-  width: 10vh;
+.bg { /* bg color should change if task is completed */
+  background-color: lightslategray;
+  width: 20vh;
+  height: 30vh;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 10px;
+  position: relative;
 
+  color: ghostwhite;
+  font-family: Helvetica;
+  font-weight: bold;
+  text-align: left;
 }

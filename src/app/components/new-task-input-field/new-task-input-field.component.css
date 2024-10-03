@@ -1,0 +1,43 @@
+body {
+  background-color: steelblue;
+  top: 80px;
+  left: 5px;
+  width: 30vw;
+  height: 60vh;
+  border-radius: 5px;
+  position: absolute;
+  z-index: 5;
+}
+input[type=text] {
+  position: absolute;
+  width: 60%;
+  left: 5px;
+  padding: 10px;
+  margin-left: 8px;
+  box-sizing: content-box;
+  border-bottom: darkgray 2px solid;
+  background-color: ghostwhite;
+  border-radius: 2.5px;
+
+}
+
+p {
+  position: relative;
+  left: 5px;
+  padding-left: 10px;
+
+
+  font-family: Helvetica;
+  font-weight: bold;
+  color: ghostwhite;
+}
+
+.submit{
+  background-color: ghostwhite;
+  cursor: pointer;
+  border-radius: 2.5px;
+  padding: 2.5px;
+  margin: 8px;
+  bottom: 10px;
+  position: absolute;
+}
