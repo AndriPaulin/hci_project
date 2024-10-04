@@ -15,6 +15,8 @@ export class NewTaskInputFieldComponent {
 
   taskName: string;
 
+
+
   @Output() newTaskEvent = new EventEmitter<TaskModel>
 
   constructor() {
@@ -31,5 +33,6 @@ export class NewTaskInputFieldComponent {
     this.newTaskEvent.emit(new TaskModel(this.taskName, 1, []));
 
   }
+
 
 }
