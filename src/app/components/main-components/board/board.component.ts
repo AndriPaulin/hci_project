@@ -23,7 +23,7 @@ export class BoardComponent {
 
   taskService: TaskServiceService = new TaskServiceService();
 
-  allTasks: TaskModel[];
+  allTasks: TaskModel[]; //Array containing all tasks. In our demo this serves as the 'central db'. It is not persistent in any way.
 
   tasksOne: TaskModel[] = [];
   tasksTwo: TaskModel[] = [];
@@ -36,7 +36,7 @@ export class BoardComponent {
   }
 
   /**
-   * Gets called by newTaskEvent
+   * Gets called by newTaskEvent from ?
    * @param task
    */
   addTask(task: TaskModel): void {

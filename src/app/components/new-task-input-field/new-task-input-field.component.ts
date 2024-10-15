@@ -21,14 +21,13 @@ export class NewTaskInputFieldComponent {
     this.taskName = "New Task";
   }
 
-  /**
-   * This does not work because there are several instances of task-service.service floating around.
-   * If you want to use task-service.service as a sort of db crutch, you should do it properly.
-   * It would probably be better to save tasks to some sort of csv or whatever.
-   */
   submit():void {
 
     this.newTaskEvent.emit(new TaskModel(this.taskName, 1, []));
+
+  }
+
+  createNewSubtaskField(): void {
 
   }
 

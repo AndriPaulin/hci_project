@@ -7,3 +7,5 @@
 - Not supported by Firefox (Ran mozilla demo on Chrome (https://mdn.github.io/dom-examples/web-speech-api/speech-color-changer/)) --> seemed to work fine)
 
 - Text to speech might be possible as well
+
+- Didn't get it to run in my own code... I don't get how it works

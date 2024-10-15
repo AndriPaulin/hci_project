@@ -1,8 +1,9 @@
 /**
  * Task model contains all information about a task.
  */
+import {Task} from "zone.js/lib/zone-impl";
 
-export class TaskModel {
+export class TaskModel{
 
   taskName: string;
   taskPriority: number;

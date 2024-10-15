@@ -1,5 +1,9 @@
 <div class="bg">
   <h2>{{this.taskName}}</h2>
+
+  <app-sub-task *ngFor="let subTask of subTaskArray">
+  </app-sub-task>
+
   <input type="checkbox"><br>
   <input type="checkbox"><br>
   <input type="checkbox"><br>
