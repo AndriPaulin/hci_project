@@ -102,7 +102,6 @@ export class BoardComponent {
    * @param task
    */
   deleteTask(task: TaskModel): void {
-    console.log("trying to delete task: " + task.taskName)
 
 
     this.taskService.deleteTask(task);

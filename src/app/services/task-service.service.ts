@@ -1,6 +1,12 @@
 /**
  * Task service keeps track of all tasks and supplies them to the board component.
  * This does NOT act as a centralized db. There are several instances floating around. I tend to forget about that...
+ *
+ *
+ * Problems:
+ * -Deletion of a Task leads to all Tasks being reloaded from task-service.ts. This leads to weird behavior,
+ * because changes in tasks are only saved locally. The behavior is weird, because some changes still seem to
+ * persist. I am somewhat confused --> will fix on thursday
  */
 import {TaskModel} from "../models/task.model";
 
@@ -11,6 +17,7 @@ export class TaskServiceService {
 
   constructor( ) {
 
+    //Only for Testing; will be removed.
     this.tasks.push(new TaskModel("1",1,[]));
     this.tasks.push(new TaskModel("2",1,[]));
     this.tasks.push(new TaskModel("3",1,[]));
@@ -23,8 +30,7 @@ export class TaskServiceService {
   }
 
   deleteTask(task: TaskModel): void {
-    let index: number = this.tasks.indexOf(task) //might not work
-    console.log("Trying to delete index: " + index)
+    let index: number = this.tasks.indexOf(task) //This works; I don't understand the details of it yet, it might fail in unexpected ways.
     this.tasks.splice(index, 1)
   }
 
