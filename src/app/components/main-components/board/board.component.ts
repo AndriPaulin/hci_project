@@ -2,7 +2,6 @@ import {Component, EventEmitter, Input, Output, SimpleChanges} from '@angular/co
 import {TaskServiceService} from "../../../services/task-service.service";
 import {TaskComponent} from "../../task/task.component";
 import {NgForOf, NgIf} from "@angular/common";
-import {NewTaskInputFieldComponent} from "../../new-task-input-field/new-task-input-field.component";
 import {TaskModel} from "../../../models/task.model";
 import {Observable, Subscription} from "rxjs";
 
@@ -12,7 +11,6 @@ import {Observable, Subscription} from "rxjs";
   imports: [
     TaskComponent,
     NgForOf,
-    NewTaskInputFieldComponent,
     NgIf
   ],
   templateUrl: './board.component.html',
@@ -41,29 +39,31 @@ export class BoardComponent {
     this.allTasks = this.taskService.getAllTasks();
   }
 
+  /**
+   * Creates subscription to CreateNewTasksEvents. Events originate in the header.component and are forwarded by the app.component.
+   *    If the subscription detects a change, this.newIpnut() is called. /////THIS WILL CHANGE//////
+   */
   ngOnInit(){
-    this.createNewTaskEventSubscription = this.createNewTaskEvent?.subscribe(() => this.newInput())
+    this.createNewTaskEventSubscription = this.createNewTaskEvent?.subscribe(() => this.createNewTask())
   }
+
+
 
 
 
   /**
-   * Gets called by newTaskEvent from ?
-   * @param task
+   * Creates a new Task in edit-mode.
+   *
+   * Gets all tasks from taskService. Then calls this.sortTasks() to display the tasks.
    */
-  addTask(task: TaskModel): void {
+  createNewTask(){
+    this.taskService.addTask(new TaskModel("Neue Liste", 1, []))
 
-    this.taskService.addTask(task);
-    this.showNewInputField = false;
     this.allTasks = this.taskService.getAllTasks();
     this.sortTasks(this.allTasks);
   }
 
-  newInput(): void {
 
-    this.showNewInputField = true;
-
-  }
 
   /**
    * Sorts all Tasks to be displayed in five columns.

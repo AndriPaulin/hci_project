@@ -1,5 +1,6 @@
 .bg { /* bg color should change if task is completed */
-  background-color: lightslategray;
+  background-color: #f5e85b;
+  border: #292929 1px solid;
   width: 20vh;
   height: 30vh;
   border-radius: 5px;
@@ -7,8 +8,38 @@
   margin: 10px;
   position: relative;
 
-  color: ghostwhite;
-  font-family: Helvetica;
+  color: #292929;
+  font-family: Futura;
   font-weight: bold;
   text-align: left;
+}
+
+.task-name {
+
+}
+
+
+.controls {
+  position: absolute;
+  height: calc(3*(30px + 1.75vh));
+  width: calc(30px + 1.75vh);
+  background-color: transparent;
+  right: -1vw; /** not good for scaling of viewport; never mind, might be big brain*/
+  bottom: -2vw; /** not good for scaling of viewport; never mind, might be big brain*/
+
+  display: flex;
+  flex-direction: column; /* stack child elements vertically */
+  justify-content: flex-end; /* push the controls div to the bottom */
+}
+
+.button {
+
+  height: calc(30px + 1.75vh);
+  width: calc(30px + 1.75vh);
+  border-radius: 5px;
+  margin: 5px;
+
+  border: #292929 1px solid;
+
+  cursor: pointer;
 }

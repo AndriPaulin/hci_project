@@ -1,5 +1,16 @@
 <div class="bg">
-  <h2>{{this.taskName}}</h2>
+
+  <div class="task-name">
+    <div *ngIf="!this.editMode">
+      <h2>{{this.taskName}}</h2>
+    </div>
+
+    <div *ngIf="this.editMode">
+      <input type="text" id="lname" name="lname" [(ngModel)]="taskName"><br><br>
+    </div>
+  </div>
+
+
 
   <app-sub-task *ngFor="let subTask of subTaskArray">
   </app-sub-task>
@@ -8,6 +19,10 @@
   <input type="checkbox"><br>
   <input type="checkbox"><br>
 
+  <div class="controls"> <!-- It might make sense to only display controls if the user is hovering over the task -->
+    <div class="button" style="background-color: #8af2a4" (click)="confirmChanges()"></div>
+    <div class="button" style="background-color: #e87564" (click)="deleteTask()"></div>
+  </div>
 </div>
 
 
