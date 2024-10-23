@@ -1,0 +1,29 @@
+.button-area {
+  float: right;
+  background-color: transparent;
+}
+
+.button {
+  float: right;
+  display: inline-block;
+  height: calc(30px + 1.75vh);
+  width: calc(30px + 1.75vh);
+  background-color: red;
+  border-radius: 5px;
+  margin-left: 10px; /* Add margin if you need spacing between buttons */
+
+  cursor: pointer;
+}
+
+.title {
+  float: left;
+  height: 5vh;
+  width: 20vw;
+  background-color: transparent;
+
+  font-family: Futura;
+  font-weight: bold;
+  font-size: calc(30px + 1.75vh); /* sets min font size to something very close to 20px */
+}
+
+

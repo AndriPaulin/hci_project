@@ -1,7 +1,7 @@
 
 
 body {
-  background-color: lightblue;
+  background-color: #ebe2cc;
   position: fixed;
   top: 60px;
   left: 5px;
@@ -40,6 +40,6 @@ td{
   top: 0;
   bottom: 0;
   width: 100%;
-  height: 96%;
+  height: 100%;
   table-layout: fixed; /* macht dass Spalten immer gleich breit bleiben*/
 }

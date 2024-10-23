@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Input, Output, SimpleChanges} from '@angular/core';
 import {TaskServiceService} from "../../../services/task-service.service";
 import {TaskComponent} from "../../task/task.component";
 import {NgForOf, NgIf} from "@angular/common";
 import {NewTaskInputFieldComponent} from "../../new-task-input-field/new-task-input-field.component";
 import {TaskModel} from "../../../models/task.model";
+import {Observable, Subscription} from "rxjs";
 
 @Component({
   selector: 'app-board',
@@ -18,6 +19,11 @@ import {TaskModel} from "../../../models/task.model";
   styleUrl: './board.component.css'
 })
 export class BoardComponent {
+
+  private createNewTaskEventSubscription: Subscription | undefined;
+
+  @Input() createNewTaskEvent: Observable<void> | undefined;
+
 
   showNewInputField: boolean = false;
 
@@ -34,6 +40,12 @@ export class BoardComponent {
   constructor() {
     this.allTasks = this.taskService.getAllTasks();
   }
+
+  ngOnInit(){
+    this.createNewTaskEventSubscription = this.createNewTaskEvent?.subscribe(() => this.newInput())
+  }
+
+
 
   /**
    * Gets called by newTaskEvent from ?

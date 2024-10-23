@@ -1,6 +1,9 @@
 <body>
 
-  <app-board></app-board>
+<app-header (createNewTaskEvent)="forwardCreateNewTaskEvent()"></app-header>
+
+<app-board
+  [createNewTaskEvent]="createNewTaskEventSubject.asObservable()"></app-board>
 
 
 </body>

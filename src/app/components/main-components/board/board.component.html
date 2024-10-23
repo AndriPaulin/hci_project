@@ -1,7 +1,5 @@
 <body>
 
-<div class="new-task-button"  (click)="newInput()">Create New Task</div>
-
 
 <app-new-task-input-field *ngIf="showNewInputField" (newTaskEvent)="addTask($event)">
 </app-new-task-input-field>
