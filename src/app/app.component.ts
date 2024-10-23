@@ -18,7 +18,6 @@ export class AppComponent {
   createNewTaskEventSubject: Subject<void> = new Subject<void>();
 
   forwardCreateNewTaskEvent() {
-    console.log("event forwarded");
     this.createNewTaskEventSubject.next();
   }
 }

@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {TaskModel} from "../../models/task.model";
 import {SubTaskModel} from "../../models/sub-task.model";
 import {NgForOf, NgIf} from "@angular/common";
@@ -22,6 +22,8 @@ export class TaskComponent {
   @Input() task: TaskModel | undefined;
   @Input() subTaskArray: SubTaskModel[] | undefined;
 
+  @Output() deleteTaskEvent: EventEmitter<TaskModel> = new EventEmitter<TaskModel>();
+
   taskName: string | undefined;
   editMode: boolean | undefined;
   constructor() {
@@ -32,7 +34,6 @@ export class TaskComponent {
     this.subTaskArray = this.task?.subTasks;
     this.taskName = this.task?.taskName;
     this.editMode = this.task?.editMode;
-    console.log(this.taskName);
   }
 
   /**
@@ -47,7 +48,7 @@ export class TaskComponent {
    * Not implemented. Will probably use an Event to notify board.component that the task is to be deleted.
    */
   deleteTask(): void {
-
+    this.deleteTaskEvent.emit(this.task);
   }
 
   addNewSubtask(): void {

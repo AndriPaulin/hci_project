@@ -8,27 +8,37 @@
   <tr>
     <td>
       <app-task *ngFor="let task of tasksOne"
-                [task]="task">
+                [task]="task"
+                (deleteTaskEvent)="deleteTask($event)"
+      >
       </app-task>
     </td>
     <td>
       <app-task *ngFor="let task of tasksTwo"
-                [task]="task">
+                [task]="task"
+                (deleteTaskEvent)="deleteTask($event)"
+      >
       </app-task>
     </td>
     <td>
       <app-task *ngFor="let task of tasksThree"
-                [task]="task">
+                [task]="task"
+                (deleteTaskEvent)="deleteTask($event)"
+      >
       </app-task>
     </td>
     <td>
       <app-task *ngFor="let task of tasksFour"
-                [task]="task">
+                [task]="task"
+                (deleteTaskEvent)="deleteTask($event)"
+      >
       </app-task>
     </td>
     <td>
       <app-task *ngFor="let task of tasksFive"
-                [task]="task">
+                [task]="task"
+                (deleteTaskEvent)="deleteTask($event)"
+      >
       </app-task>
     </td>
   </tr>

@@ -97,4 +97,19 @@ export class BoardComponent {
     }
   }
 
+  /**
+   * Deletes Task from tasks in task service; then reloads tasks.
+   * @param task
+   */
+  deleteTask(task: TaskModel): void {
+    console.log("trying to delete task: " + task.taskName)
+
+
+    this.taskService.deleteTask(task);
+
+    this.allTasks = this.taskService.getAllTasks();
+    this.sortTasks(this.allTasks);
+  }
+
+  protected readonly TaskModel = TaskModel;
 }
