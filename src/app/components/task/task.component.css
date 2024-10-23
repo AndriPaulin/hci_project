@@ -1,8 +1,8 @@
 .bg { /* bg color should change if task is completed */
   background-color: #f5e85b;
   border: #292929 1px solid;
-  width: 20vh;
-  height: 30vh;
+  width: 25vh;
+  height: 32vh;
   border-radius: 5px;
   padding: 5px;
   margin: 10px;
@@ -12,6 +12,23 @@
   font-family: Futura;
   font-weight: bold;
   text-align: left;
+
+  margin-bottom: 5vh;
+}
+
+.container {
+  overflow-y: scroll;
+  word-wrap: break-word;
+  min-height: 100%;
+  max-height: 100%;
+  min-width: 100%;
+
+  scrollbar-width: none;  /* firefox */
+  -ms-overflow-style: none;  /* Internet Explorer and Edge */
+}
+
+.container::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari */
 }
 
 .task-name {
