@@ -1,1 +1,19 @@
-<p>sub-task works!</p>
+
+
+<div class="subtask">
+
+
+
+  <div *ngIf="!this.editMode" class="subtask-name">
+    <input type="checkbox" class="checkbox">
+    {{subTask.subTaskName}}
+  </div>
+
+
+  <div *ngIf="this.editMode" class="subtask-name">
+    <input type="text" class="input" [(ngModel)]="subTask.subTaskName"><br><br>
+  </div>
+
+</div>
+
+

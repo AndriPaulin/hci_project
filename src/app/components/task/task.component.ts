@@ -46,7 +46,11 @@ export class TaskComponent {
   /**
    * Not implemented. Will probably use an Event to notify board.component that the task is to be deleted.
    */
-  deleteTask() {
+  deleteTask(): void {
 
+  }
+
+  addNewSubtask(): void {
+    this.subTaskArray?.push(new SubTaskModel("neue Aufgabe"))
   }
 }

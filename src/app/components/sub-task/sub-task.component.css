@@ -1,0 +1,33 @@
+
+.checkbox {
+  height: calc(12px + 1vh);
+  width: calc(12px + 1vh);
+  border-radius: 5px;
+  margin-right: 5px;
+  border: #292929 1px solid;
+  cursor: pointer;
+}
+
+.subtask {
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* Centers content vertically */
+  justify-content: flex-start; /* Ensures checkbox and title/input stay aligned to the left */
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.subtask-name {
+  margin: 0;
+  display: flex;
+  align-items: center; /* Ensures the title or input is centered vertically */
+}
+
+.input {
+  right: 1vw;
+  height: calc(12px + 1vh);
+  border-radius: 5px;
+  border: #292929 1px solid;
+  font-family: Futura;
+  font-weight: bold;
+}

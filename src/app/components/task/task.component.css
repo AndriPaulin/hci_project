@@ -15,7 +15,15 @@
 }
 
 .task-name {
+  font-family: Futura;
+  font-weight: bold;
+  font-size: calc(12px + 1vh);
+  margin-bottom: 10px;
+  padding: 5px;
 
+  border-radius: 5px;
+
+  background-color: #d9cf66;
 }
 
 
@@ -42,4 +50,34 @@
   border: #292929 1px solid;
 
   cursor: pointer;
+}
+
+.new-sub-task {
+  height: calc(10px + 1.75vh);
+  background-color: #d9cf66;
+  right: -1vw; /** not good for scaling of viewport; never mind, might be big brain*/
+  bottom: -2vw; /** not good for scaling of viewport; never mind, might be big brain*/
+
+  font-style: italic;
+
+  display: flex;
+  flex-direction: column; /* stack child elements vertically */
+  justify-content: normal; /* push the controls div to the bottom */
+
+  border-radius: 5px;
+
+  cursor: pointer;
+
+  padding-left: 5px;
+}
+
+.input {
+  max-width: 95%;
+  right: 1vw;
+  height: calc(12px + 2vh);
+  border-radius: 5px;
+  border: #292929 1px solid;
+  font-family: Futura;
+  font-weight: bold;
+  font-size: calc(12px + 1vh);
 }

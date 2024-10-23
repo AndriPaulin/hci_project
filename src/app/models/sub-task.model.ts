@@ -4,12 +4,12 @@
 
 export class SubTaskModel{
 
-  taskName: string;
+  subTaskName: string;
   subTaskCompleted: boolean;
 
   constructor(taskName: string ) {
 
-    this.taskName = taskName;
+    this.subTaskName = taskName;
     this.subTaskCompleted = false;
 
   }

@@ -4,6 +4,7 @@ import {TaskComponent} from "../../task/task.component";
 import {NgForOf, NgIf} from "@angular/common";
 import {TaskModel} from "../../../models/task.model";
 import {Observable, Subscription} from "rxjs";
+import {SubTaskModel} from "../../../models/sub-task.model";
 
 @Component({
   selector: 'app-board',
@@ -57,7 +58,8 @@ export class BoardComponent {
    * Gets all tasks from taskService. Then calls this.sortTasks() to display the tasks.
    */
   createNewTask(){
-    this.taskService.addTask(new TaskModel("Neue Liste", 1, []))
+
+    this.taskService.addTask(new TaskModel("neue Liste", 1, [new SubTaskModel("neue Aufgabe")]))
 
     this.allTasks = this.taskService.getAllTasks();
     this.sortTasks(this.allTasks);

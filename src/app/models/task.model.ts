@@ -1,16 +1,16 @@
 /**
  * Task model contains all information about a task.
  */
-import {Task} from "zone.js/lib/zone-impl";
+import {SubTaskModel} from "./sub-task.model";
 
 export class TaskModel{
 
   taskName: string;
   taskPriority: number;
-  subTasks: [];
+  subTasks: SubTaskModel[];
   editMode: boolean;
 
-  constructor(taskName: string, taskPriority: number, subTasks: [] ) {
+  constructor(taskName: string, taskPriority: number, subTasks: SubTaskModel[] ) {
 
     this.taskName = taskName;
     this.taskPriority = taskPriority;
