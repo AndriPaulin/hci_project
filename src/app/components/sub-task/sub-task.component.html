@@ -5,13 +5,13 @@
 
 
   <div *ngIf="!this.editMode" class="subtask-name">
-    <input type="checkbox" class="checkbox" [(ngModel)]="checkbox" (change)="onCheckboxChange()">
+    <input type="checkbox" class="checkbox" [(ngModel)]="checkbox" (change)="onSubtaskChange()">
     {{subTask.subTaskName}}
   </div>
 
 
   <div *ngIf="this.editMode" class="subtask-name">
-    <input type="text" class="input" [(ngModel)]="subTask.subTaskName"><br><br>
+    <input type="text" class="input" [(ngModel)]="subTask.subTaskName" (change)="onSubtaskChange()"><br><br>
   </div>
 
 </div>

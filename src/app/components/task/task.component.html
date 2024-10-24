@@ -7,7 +7,7 @@
       </div>
 
       <div *ngIf="this.task.editMode">
-        <input class="input" type="text" [(ngModel)]="this.task.taskName"><br><br>
+        <input class="input" type="text" [(ngModel)]="this.task.taskName" (change)="safeToTaskService()"><br><br>
       </div>
     </div>
 

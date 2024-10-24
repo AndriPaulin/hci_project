@@ -33,7 +33,7 @@ export class SubTaskComponent {
     this.checkbox = this.subTask.subTaskCompleted;
   }
 
-  onCheckboxChange(): void {
+  onSubtaskChange(): void {
     this.subTask.subTaskCompleted = this.checkbox;
     this.checkboxChangeEvent.emit();
   }
