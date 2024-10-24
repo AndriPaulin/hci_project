@@ -9,28 +9,41 @@
  * persist. I am somewhat confused --> will fix on thursday
  */
 import {TaskModel} from "../models/task.model";
+import {IndexingContext} from "@angular/compiler-cli/src/ngtsc/indexer";
+import {SubTaskModel} from "../models/sub-task.model";
 
 
 export class TaskServiceService {
 
   tasks: TaskModel[] = [];
+  taskIdCounter: number = 0 //first ID will be 1
 
   constructor( ) {
 
-    //Only for Testing; will be removed.
-    this.tasks.push(new TaskModel("1",1,[]));
-    this.tasks.push(new TaskModel("2",1,[]));
-    this.tasks.push(new TaskModel("3",1,[]));
-
 
   }
 
-  addTask(task: TaskModel): void {
-    this.tasks.push(task);
+  addTask(): void {
+    this.taskIdCounter++;
+    this.tasks.push(new TaskModel("Neue Liste " + this.taskIdCounter, 1, [new SubTaskModel("neue Aufgabe")], true, this.taskIdCounter));
   }
 
-  deleteTask(task: TaskModel): void {
-    let index: number = this.tasks.indexOf(task) //This works; I don't understand the details of it yet, it might fail in unexpected ways.
+  /**
+   * Deletes a Task from this.tasks.
+   * Compares taskToBeDeleted to tasks in tasks (array), once the corresponding ID is fond,
+   * the index of the task is determined and then used to splice the task from the array.
+   * @param taskToBeDeleted
+   */
+  deleteTask(taskToBeDeleted: TaskModel): void {
+    let index: number = 0; //will be overwritten once proper index is found
+
+    for (let i = 0; i < this.tasks.length; i++){
+      if (taskToBeDeleted.taskId == this.tasks[i].taskId){
+        index = this.tasks.indexOf(this.tasks[i])
+        break;
+      }
+    }
+
     this.tasks.splice(index, 1)
   }
 
@@ -39,6 +52,19 @@ export class TaskServiceService {
    */
   getAllTasks(): TaskModel[] {
     return this.tasks;
+  }
+
+  /**
+   * Updates a Task by replacing with a task provided in the function.
+   * @param updatedTask
+   */
+  updateTask(updatedTask: TaskModel): void {
+    for (let i = 0; i < this.tasks.length; i++) {
+      if (updatedTask.taskId == this.tasks[i].taskId) {
+        this.tasks[i] = updatedTask;
+        break;
+      }
+    }
   }
 
 }

@@ -19,21 +19,21 @@ import {FormsModule} from "@angular/forms";
 })
 export class TaskComponent {
 
-  @Input() task: TaskModel | undefined;
-  @Input() subTaskArray: SubTaskModel[] | undefined;
+  @Input() inputTask: TaskModel = new TaskModel("", 0, [],false, 0);
 
   @Output() deleteTaskEvent: EventEmitter<TaskModel> = new EventEmitter<TaskModel>();
+  @Output() updateTaskEvent: EventEmitter<TaskModel> = new EventEmitter<TaskModel>()
 
-  taskName: string | undefined;
-  editMode: boolean | undefined;
+
+  task: TaskModel = new TaskModel("", 0, [], false,0);
+
   constructor() {
   }
 
   ngOnChanges() {
     // ngOnChanges is triggered when @Input properties change or are set. --> If this stuff is in the constructor it will load before the inputs are processed and everything will return undefined.
-    this.subTaskArray = this.task?.subTasks;
-    this.taskName = this.task?.taskName;
-    this.editMode = this.task?.editMode;
+
+    this.task = new TaskModel(this.inputTask.taskName, this.inputTask.taskPriority, this.inputTask.subTasks, this.inputTask.editMode, this.inputTask.taskId)
   }
 
   /**
@@ -41,17 +41,25 @@ export class TaskComponent {
    * This only works locally and does not notify task-service of the change; This functionality might need to be added.
    */
   confirmChanges():void {
-    this.editMode = false;
+    this.task.editMode = false;
+
+
+
+    this.safeToTaskService(); //this would make more sense if we were to safe to a Database. Right now we're just saving to the array in taskService and then loading from it again... Kind of pointless, but makes some sense from a conceptual point of view.
   }
 
   /**
-   * Not implemented. Will probably use an Event to notify board.component that the task is to be deleted.
+   *
    */
   deleteTask(): void {
     this.deleteTaskEvent.emit(this.task);
   }
 
   addNewSubtask(): void {
-    this.subTaskArray?.push(new SubTaskModel("neue Aufgabe"))
+    this.task.subTasks.push(new SubTaskModel("neue Aufgabe"))
+  }
+
+  safeToTaskService(): void {
+    this.updateTaskEvent.emit(this.task) //Reminder: check if subtasks are updated!
   }
 }

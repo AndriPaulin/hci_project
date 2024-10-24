@@ -24,7 +24,7 @@ export class BoardComponent {
   @Input() createNewTaskEvent: Observable<void> | undefined;
 
 
-  showNewInputField: boolean = false;
+  showNewInputField: boolean = false; //legacy --> remove
 
   taskService: TaskServiceService = new TaskServiceService();
 
@@ -59,10 +59,8 @@ export class BoardComponent {
    */
   createNewTask(){
 
-    this.taskService.addTask(new TaskModel("neue Liste", 1, [new SubTaskModel("neue Aufgabe")]))
-
-    this.allTasks = this.taskService.getAllTasks();
-    this.sortTasks(this.allTasks);
+    this.taskService.addTask();
+    this.reloadTasks();
   }
 
 
@@ -101,14 +99,20 @@ export class BoardComponent {
    * Deletes Task from tasks in task service; then reloads tasks.
    * @param task
    */
-  deleteTask(task: TaskModel): void {
-
-
-    this.taskService.deleteTask(task);
-
-    this.allTasks = this.taskService.getAllTasks();
-    this.sortTasks(this.allTasks);
+  deleteTask($event: TaskModel): void {
+    this.taskService.deleteTask($event);
+    this.reloadTasks();
   }
 
   protected readonly TaskModel = TaskModel;
+
+  updateTask($event: TaskModel): void {
+    this.taskService.updateTask($event);
+
+  }
+
+  reloadTasks(): void {
+    this.allTasks = this.taskService.getAllTasks();
+    this.sortTasks(this.allTasks);
+  }
 }

@@ -2,23 +2,23 @@
 <div class="bg">
   <div class="container">
     <div>
-      <div *ngIf="!this.editMode" class="task-name">
-        {{this.taskName}}
+      <div *ngIf="!this.task.editMode" class="task-name">
+        {{this.task.taskName}}
       </div>
 
-      <div *ngIf="this.editMode">
-        <input class="input" type="text" [(ngModel)]="taskName"><br><br>
+      <div *ngIf="this.task.editMode">
+        <input class="input" type="text" [(ngModel)]="this.task.taskName"><br><br>
       </div>
     </div>
 
 
 
-    <app-sub-task *ngFor="let subTask of subTaskArray"
-                  [editMode]="editMode"
+    <app-sub-task *ngFor="let subTask of this.task.subTasks"
+                  [editMode]="this.task.editMode"
                   [subTask]="subTask"> <!--this is the specific subTask of type subTaskModel that stores the data for the subTask-->
     </app-sub-task>
 
-    <div class="new-sub-task" *ngIf="editMode" (click)="addNewSubtask()">
+    <div class="new-sub-task" *ngIf="this.task.editMode" (click)="addNewSubtask()">
       + Aufgabe hinzufügen
     </div>
   </div>

@@ -9,13 +9,15 @@ export class TaskModel{
   taskPriority: number;
   subTasks: SubTaskModel[];
   editMode: boolean;
+  taskId: number;
 
-  constructor(taskName: string, taskPriority: number, subTasks: SubTaskModel[] ) {
+  constructor(taskName: string, taskPriority: number, subTasks: SubTaskModel[], editMode: boolean, taskId: number) {
 
     this.taskName = taskName;
     this.taskPriority = taskPriority;
     this.subTasks = subTasks;
-    this.editMode = true; //this would be problematic if we worked with a db
+    this.editMode = editMode;
+    this.taskId = taskId;
     }
 
   }
