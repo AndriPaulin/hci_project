@@ -1,8 +1,8 @@
 
-<div class="bg">
+<div class="{{BGColor}}">
   <div class="container">
     <div>
-      <div *ngIf="!this.task.editMode" class="task-name">
+      <div *ngIf="!this.task.editMode" class="{{taskNameColor}}">
         {{this.task.taskName}}
       </div>
 
@@ -31,5 +31,4 @@
     <div class="button" style="background-color: #e87564" (click)="deleteTask()"></div>
   </div>
 </div>
-
 

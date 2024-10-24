@@ -26,6 +26,8 @@ export class TaskComponent {
 
 
   task: TaskModel = new TaskModel("", 0, [], false,0);
+  BGColor: string = "bg-yellow";
+  taskNameColor: string = "task-name-yellow";
 
   constructor() {
   }
@@ -34,6 +36,7 @@ export class TaskComponent {
     // ngOnChanges is triggered when @Input properties change or are set. --> If this stuff is in the constructor it will load before the inputs are processed and everything will return undefined.
 
     this.task = new TaskModel(this.inputTask.taskName, this.inputTask.taskPriority, this.inputTask.subTasks, this.inputTask.editMode, this.inputTask.taskId)
+    this.setBGColor();
   }
 
   /**
@@ -60,6 +63,18 @@ export class TaskComponent {
   }
 
   safeToTaskService(): void {
+    this.task.checkIfCompleted(); //method of task.model.ts. It might be better to move the check to task.component.ts
+    this.setBGColor();
     this.updateTaskEvent.emit(this.task) //Reminder: check if subtasks are updated!
+  }
+
+  setBGColor():void {
+    if (this.task.taskCompleted){
+      this.BGColor = "bg-green";
+      this.taskNameColor = "task-name-green"
+    } else {
+      this.BGColor = "bg-yellow";
+      this.taskNameColor = "task-name-yellow"
+    }
   }
 }
