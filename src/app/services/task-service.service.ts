@@ -6,7 +6,7 @@
  * Problems:
  * -Deletion of a Task leads to all Tasks being reloaded from task-service.ts. This leads to weird behavior,
  * because changes in tasks are only saved locally. The behavior is weird, because some changes still seem to
- * persist. I am somewhat confused --> will fix on thursday
+ * persist. I am somewhat confused --> will fix on thursday | is partially fixed
  */
 import {TaskModel} from "../models/task.model";
 import {IndexingContext} from "@angular/compiler-cli/src/ngtsc/indexer";
@@ -25,7 +25,7 @@ export class TaskServiceService {
 
   addTask(): void {
     this.taskIdCounter++;
-    this.tasks.push(new TaskModel("Neue Liste " + this.taskIdCounter, 1, [new SubTaskModel("neue Aufgabe")], true, this.taskIdCounter));
+    this.tasks.push(new TaskModel("Neue Liste " + this.taskIdCounter, 1, [new SubTaskModel("neue Aufgabe", false)], true, this.taskIdCounter));
   }
 
   /**
@@ -59,6 +59,7 @@ export class TaskServiceService {
    * @param updatedTask
    */
   updateTask(updatedTask: TaskModel): void {
+
     for (let i = 0; i < this.tasks.length; i++) {
       if (updatedTask.taskId == this.tasks[i].taskId) {
         this.tasks[i] = updatedTask;

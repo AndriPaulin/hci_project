@@ -56,7 +56,7 @@ export class TaskComponent {
   }
 
   addNewSubtask(): void {
-    this.task.subTasks.push(new SubTaskModel("neue Aufgabe"))
+    this.task.subTasks.push(new SubTaskModel("neue Aufgabe", false))
   }
 
   safeToTaskService(): void {

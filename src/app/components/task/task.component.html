@@ -15,7 +15,9 @@
 
     <app-sub-task *ngFor="let subTask of this.task.subTasks"
                   [editMode]="this.task.editMode"
-                  [subTask]="subTask"> <!--this is the specific subTask of type subTaskModel that stores the data for the subTask-->
+                  [subTask]="subTask"
+                  (checkboxChangeEvent)="safeToTaskService()"
+    > <!--this is the specific subTask of type subTaskModel that stores the data for the subTask-->
     </app-sub-task>
 
     <div class="new-sub-task" *ngIf="this.task.editMode" (click)="addNewSubtask()">

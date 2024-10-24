@@ -104,11 +104,9 @@ export class BoardComponent {
     this.reloadTasks();
   }
 
-  protected readonly TaskModel = TaskModel;
 
   updateTask($event: TaskModel): void {
     this.taskService.updateTask($event);
-
   }
 
   reloadTasks(): void {
